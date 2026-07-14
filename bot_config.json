@@ -1,0 +1,38 @@
+{
+  "bot_name": "Community Bot",
+  "prefix": "!",
+  "activity": "コミュニティを見守っています",
+  "status": "online",
+  "welcome": {
+    "enabled": true,
+    "channel_id": "",
+    "message": "{user} さん、**{server}** へようこそ！"
+  },
+  "goodbye": {
+    "enabled": false,
+    "channel_id": "",
+    "message": "**{username}** さんがサーバーを退出しました。"
+  },
+  "moderation": {
+    "enabled": false,
+    "blocked_words": [],
+    "warning": "{user} この言葉は使用できません。"
+  },
+  "auto_replies": [
+    {
+      "trigger": "おはよう",
+      "response": "おはようございます！今日もよい一日を。",
+      "match": "contains"
+    }
+  ],
+  "custom_commands": [
+    {
+      "name": "rules",
+      "response": "サーバールールを確認してください。"
+    },
+    {
+      "name": "support",
+      "response": "困ったときは管理者へお問い合わせください。"
+    }
+  ]
+}
