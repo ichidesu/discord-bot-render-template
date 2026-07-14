@@ -23,6 +23,7 @@ from flask import (
     session,
     url_for,
 )
+from flask.typing import ResponseReturnValue
 from waitress import serve
 
 BASE_DIR = Path(__file__).resolve().parent
@@ -439,6 +440,8 @@ class CustomDiscordBot(discord.Client):
             if blocked_word:
                 try:
                     await message.delete()
+                    if not isinstance(message.author, discord.Member):
+                        return
                     warning = format_message(
                         moderation["warning"],
                         message.author,
@@ -564,7 +567,7 @@ def index() -> str:
 
 
 @app.post("/login")
-def login() -> Response:
+def login() -> ResponseReturnValue:
     if ADMIN_PASSWORD and secrets.compare_digest(
         request.form.get("password", ""),
         ADMIN_PASSWORD,
@@ -575,7 +578,7 @@ def login() -> Response:
 
 
 @app.post("/logout")
-def logout() -> Response:
+def logout() -> ResponseReturnValue:
     session.clear()
     return redirect(url_for("index"))
 
